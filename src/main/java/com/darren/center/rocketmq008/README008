@@ -1,0 +1,7 @@
+事务消息
+
+TransactionMQProducer可以设置线程池
+//设置线程池
+ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(10, 20,
+                20L, TimeUnit.SECONDS, new ArrayBlockingQueue<>(200));
+producer.setExecutorService(threadPoolExecutor);

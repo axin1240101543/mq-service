@@ -1,0 +1,10 @@
+集群消息模式下，Producer生产了消息，只有一个consumer能够消费，
+这个consumer会把所有的消息拉回来，然后与tags相匹配的被消费（CONSUMED），
+不能够匹配的将被CONSUMED_BUT_FILTERED（消费并过滤掉）。
+
+想要消费，那么需要换一个组来消费，即同一个组不能同时干两件事儿，又过滤又消费。
+DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("xxxx");
+consumer.subscribe("myTopic002", "tag_aaa");
+
+DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("oooo");
+consumer.subscribe("myTopic002", "tag_bbb");
